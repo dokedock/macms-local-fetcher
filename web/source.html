@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>今日更新</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>今日更新</h1>
+
+      <section class="card">
+        <div class="row">
+          <a href="/" class="muted">返回首页</a>
+          <span id="source-id" class="muted"></span>
+          <button id="btn-refresh" class="secondary">刷新</button>
+          <span id="summary" class="muted"></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>列表</h2>
+        <div id="items"></div>
+      </section>
+    </div>
+
+    <script src="/static/source.js"></script>
+  </body>
+</html>
+

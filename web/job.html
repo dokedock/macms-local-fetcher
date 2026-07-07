@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>任务详情</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>任务详情</h1>
+
+      <section class="card">
+        <div class="row">
+          <a href="/" class="muted">返回首页</a>
+          <span id="job-id" class="muted"></span>
+          <button id="btn-stop" class="danger">停止任务</button>
+          <button id="btn-refresh" class="secondary">刷新</button>
+          <span id="job-status" class="muted"></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>概要</h2>
+        <div id="job-summary" class="muted"></div>
+      </section>
+
+      <section class="card">
+        <h2>各源进度</h2>
+        <div id="job-sources"></div>
+      </section>
+    </div>
+
+    <script src="/static/job.js"></script>
+  </body>
+</html>
+

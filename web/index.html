@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>本地采集器</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>本地采集器</h1>
+
+      <section class="card">
+        <h2>添加/编辑采集源</h2>
+        <div class="grid">
+          <label>
+            名称
+            <input id="src-name" placeholder="例如：slapibf" />
+          </label>
+          <label>
+            Base URL
+            <input id="src-base-url" placeholder="https://xxx.com/api.php/provide/vod/" />
+          </label>
+          <label>
+            格式
+            <select id="src-format">
+              <option value="auto">auto</option>
+              <option value="json">json</option>
+              <option value="xml">xml</option>
+            </select>
+          </label>
+          <label>
+            启用
+            <select id="src-enabled">
+              <option value="1">是</option>
+              <option value="0">否</option>
+            </select>
+          </label>
+          <label class="span2">
+            SOCKS5 代理（可空）
+            <input id="src-proxy" placeholder="socks5://user:pass@127.0.0.1:1080" />
+          </label>
+          <label class="span2">
+            Headers(JSON，可空)
+            <input id="src-headers" placeholder='{"User-Agent":"..."}' />
+          </label>
+        </div>
+        <div class="row">
+          <button id="btn-save-source">保存</button>
+          <button id="btn-reset-source" class="secondary">清空</button>
+          <span id="src-editing" class="muted"></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>采集任务</h2>
+        <div class="grid">
+          <label>
+            模式
+            <select id="job-mode">
+              <option value="daily">每日更新</option>
+              <option value="range">时间段采集</option>
+              <option value="full">全量采集</option>
+            </select>
+          </label>
+          <label>
+            并发
+            <input id="job-concurrency" type="number" min="1" value="5" />
+          </label>
+          <label>
+            开始时间（range）
+            <input id="job-start" placeholder="2026-07-01 00:00:00" />
+          </label>
+          <label>
+            结束时间（range）
+            <input id="job-end" placeholder="2026-07-07 23:59:59" />
+          </label>
+        </div>
+        <div class="row">
+          <span class="muted">选择采集源</span>
+          <button id="btn-job-select-all" class="secondary">全选</button>
+          <button id="btn-job-select-none" class="secondary">全不选</button>
+        </div>
+        <div id="job-sources-select"></div>
+        <div class="row">
+          <button id="btn-run-job">开始采集</button>
+          <button id="btn-refresh-jobs" class="secondary">刷新任务</button>
+          <span id="job-current" class="muted"></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>数据操作</h2>
+        <div class="row">
+          <button id="btn-dedup">按标题删重</button>
+          <button id="btn-clear" class="danger">清空所有采集数据</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>导出 CSV</h2>
+        <div class="grid">
+          <label>
+            关键字
+            <input id="export-keyword" />
+          </label>
+          <label>
+            Source ID（可空）
+            <input id="export-source-id" type="number" min="1" />
+          </label>
+          <label>
+            开始时间（可空）
+            <input id="export-start" placeholder="2026-07-01 00:00:00" />
+          </label>
+          <label>
+            结束时间（可空）
+            <input id="export-end" placeholder="2026-07-07 23:59:59" />
+          </label>
+        </div>
+        <div class="row">
+          <button id="btn-export">导出</button>
+          <a id="export-link" class="muted" target="_blank"></a>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>采集源列表</h2>
+        <div id="sources"></div>
+      </section>
+
+      <section class="card">
+        <h2>任务列表</h2>
+        <div id="jobs"></div>
+      </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
